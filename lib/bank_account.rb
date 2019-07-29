@@ -10,12 +10,17 @@ class BankAccount
 
   def deposit(date: ,credit: )
     @balance += credit
+
     @transaction[:date] = date
     @transaction[:credit] = credit
     @transaction[:balance] = @balance
   end
-  #
-  # def withdraw(money)
-  #   @balance -= money
-  # end
+
+  def withdrawal(date: , debit: )
+    @balance -= debit
+
+    @transaction[:date] = date
+    @transaction[:debit] = debit
+    @transaction[:balance] = @balance
+  end
 end

@@ -28,6 +28,13 @@ describe BankAccount do
       expect(bank_account.balance).to eq 1000
     end
 
+    it 'Withdraw money from a bank account' do
+      bank_account = BankAccount.new
+      bank_account.deposit(date: "10-01-2012", credit: 1000)
+      bank_account.withdrawal(date: "10-01-2012", debit: 500)
+      expect(bank_account.balance).to eq 500
+    end
+
     it 'Track my current transaction' do
       bank_account = BankAccount.new
       bank_account.deposit(date: "10-01-2012", credit: 1000)
@@ -36,12 +43,5 @@ describe BankAccount do
       expect(bank_account.transaction[:debit]).to eq 0
       expect(bank_account.transaction[:balance]).to eq 1000
     end
-    #
-    # it 'Withdraw money from a bank account' do
-    #   bank_account = BankAccount.new
-    #   bank_account.deposit(1000)
-    #   bank_account.withdraw(500)
-    #   expect(bank_account.balance).to eq 500
-    # end
   end
 end
