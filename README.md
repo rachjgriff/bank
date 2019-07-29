@@ -57,15 +57,15 @@ date || credit || debit || balance
 10/01/2012 || 1000.00 || || 1000.00
 ```
 
-## APPROACH & STRATEGY
+## APPROACH & STRATEGY 1
 ---------
-* 2 classes: BankAccount, BankStatement
+* 2 possible classes: BankAccount, BankStatement
 * Methods:
   * deposit
   * withdrawal
   * balance (intialization)
   * statement
-* Store transactions in a hash: { date => [credit, debit, balance] }
+* Store transactions
 
 ##### QUESTIONS/THOUGHTS
 * How do I set date as the key in transactions hash?
@@ -77,6 +77,23 @@ date || credit || debit || balance
 * Can the client make more than one deposit or withdrawal a day?
   * If so, should the credit and debit amounts sum these for that day?
   * Or can there be more than one entry for the same date?
+* Does the date auto-generate or get added manually?
+* How to store transactions?
+  * in a hash: { date => [credit, debit, balance] }
+  * in an array: [date: , credit: , debit:, balance: ]
+
+## APPROACH / STRATEGY 2
+
+* Class BankAccount
+  * Initialize with:
+    * @transactions = [date: , credit: , debit: , balance: ]
+    * @balance = 0
+* Methods:
+  * update_balance(date: , credit: , debit: )
+    * This will update balance and push information to @transactions
+  * print_statement
+    * This will take @transactions and format according to requirements above
+
 
 ## USER STORIES
 ---------
@@ -88,3 +105,10 @@ I can deposit money into my bank account
 As a bank account holder  
 So that I can buy lots of nice clothes for my holiday  
 I can withdraw money from my bank account
+
+## USER STORIES UPDATED
+---------
+
+As a new bank account holder  
+So that I can open a bank account  
+I have a zero balance
