@@ -94,19 +94,22 @@ date || credit || debit || balance
   * print_statement
     * This will take @transactions and format according to requirements above
 
+## APPROACH / STRATEGY 3
+
+* Combined Approach 1 & 2
+* Class BankAccount
+  * Initialize with:
+    * @balance = 0
+    * @transaction = {date: "", credit: 0, debit: 0, balance: @balance}
+    * @transactions = []
+* Methods:
+  * deposit(date: , credit: )
+  * withdrawal(date: , debit: )
+  * record_transaction
+  * statement
+
 
 ## USER STORIES
----------
-
-As a bank account holder    
-So that I can save for a holiday  
-I can deposit money into my bank account
-
-As a bank account holder  
-So that I can buy lots of nice clothes for my holiday  
-I can withdraw money from my bank account
-
-## USER STORIES UPDATED
 ---------
 
 As a new bank account holder  
@@ -115,4 +118,16 @@ I have a zero balance
 
 As a new bank account holder  
 So that I can open a bank account  
-I have made zero transactions
+I have not made a transaction 
+
+As a new bank account holder  
+So that I can open a bank account  
+I have made no transaction history
+
+As a bank account holder    
+So that I can save for a holiday  
+I can deposit money into my bank account
+
+As a bank account holder  
+So that I can buy lots of nice clothes for my holiday  
+I can withdraw money from my bank account
