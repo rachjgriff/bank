@@ -59,11 +59,11 @@ date || credit || debit || balance
 
 ## APPROACH & STRATEGY
 ---------
-* 2 classes: BankMachine, BankStatement
+* 2 classes: BankAccount, BankStatement
 * Methods:
   * deposit
   * withdrawal
-  * balance
+  * balance (intialization)
   * statement
 * Store transactions in a hash: { date => [credit, debit, balance] }
 
@@ -74,7 +74,13 @@ date || credit || debit || balance
 * Need to ensure that **credit** is left blank if only a **withdrawal** is made
 * Need to ensure that **debit** is left blank if only a **deposit** is made
 * Is the client allowed to have a negative balance and continue to make withdrawals?
-
+* Can the client make more than one deposit or withdrawal a day?
+  * If so, should the credit and debit amounts sum these for that day?
+  * Or can there be more than one entry for the same date?
 
 ## USER STORIES
 ---------
+
+As a bank account holder    
+So that I can save for a holiday  
+I can deposit money into my bank account
