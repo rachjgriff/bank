@@ -1,6 +1,7 @@
 require 'bank_account'
 
 describe BankAccount do
+  
   context 'When a bank account is setup' do
     it 'Balance is set to 0' do
       bank_account = BankAccount.new

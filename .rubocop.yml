@@ -478,6 +478,8 @@ ZeroLengthPredicate:
   Enabled: false
 
 # Additional exceptions added:
+Metrics/BlockLength:
+  Enabled: false
 
 # AllCops:
 #   Exclude:
