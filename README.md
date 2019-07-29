@@ -84,3 +84,7 @@ date || credit || debit || balance
 As a bank account holder    
 So that I can save for a holiday  
 I can deposit money into my bank account
+
+As a bank account holder  
+So that I can buy lots of nice clothes for my holiday  
+I can withdraw money from my bank account
