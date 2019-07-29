@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/rachjgriff/bank.svg?branch=master)](https://travis-ci.com/rachjgriff/bank)
+
 # RACHEL GRIFFITHS: BANK CHALLENGE
 ----------
 ## PROJECT DESCRIPTION
