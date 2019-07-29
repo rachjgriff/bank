@@ -112,3 +112,7 @@ I can withdraw money from my bank account
 As a new bank account holder  
 So that I can open a bank account  
 I have a zero balance
+
+As a new bank account holder  
+So that I can open a bank account  
+I have made zero transactions

@@ -6,6 +6,11 @@ describe BankAccount do
       bank_account = BankAccount.new
       expect(bank_account.balance).to eq 0
     end
+
+    it 'There is no transaction history' do
+      bank_account = BankAccount.new
+      expect(bank_account.transactions).to eq []
+    end
   end
   # context 'As a bank account holder, I can:' do
     # it 'Deposit money into a bank account' do
