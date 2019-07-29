@@ -135,3 +135,7 @@ I can track my transaction
 As a bank account holder  
 So that I can buy lots of nice clothes for my holiday  
 I can withdraw money from my bank account
+
+As a bank account holder  
+So that I can see how my balance is changing over time  
+I can see my transaction history

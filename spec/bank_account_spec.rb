@@ -17,7 +17,7 @@ describe BankAccount do
 
     it 'There is no transaction history' do
       bank_account = BankAccount.new
-      expect(bank_account.transactions).to eq []
+      expect(bank_account.transaction_history).to eq []
     end
   end
 

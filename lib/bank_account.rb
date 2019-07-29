@@ -1,11 +1,11 @@
 class BankAccount
 
-  attr_reader :balance, :transaction, :transactions
+  attr_reader :balance, :transaction, :transaction_history
 
   def initialize
     @balance = 0
     @transaction = {date: "", credit: 0, debit: 0, balance: 0}
-    @transactions = []
+    @transaction_history = []
   end
 
   def deposit(date: ,credit: )
