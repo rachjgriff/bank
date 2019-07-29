@@ -118,7 +118,7 @@ I have a zero balance
 
 As a new bank account holder  
 So that I can open a bank account  
-I have not made a transaction 
+I have not made a transaction
 
 As a new bank account holder  
 So that I can open a bank account  
@@ -127,6 +127,10 @@ I have made no transaction history
 As a bank account holder    
 So that I can save for a holiday  
 I can deposit money into my bank account
+
+As bank account holder  
+So that I can ensure my bank account has been updated correctly  
+I can track my transaction
 
 As a bank account holder  
 So that I can buy lots of nice clothes for my holiday  

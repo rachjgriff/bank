@@ -8,9 +8,12 @@ class BankAccount
     @transactions = []
   end
 
-  # def deposit(money)
-  #   @balance += money
-  # end
+  def deposit(date: ,credit: )
+    @balance += credit
+    @transaction[:date] = date
+    @transaction[:credit] = credit
+    @transaction[:balance] = @balance
+  end
   #
   # def withdraw(money)
   #   @balance -= money
