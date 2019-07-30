@@ -34,9 +34,9 @@ describe BankAccount do
       bank_account.deposit(date: "10-01-2012", credit: 1000)
 
       expect(bank_account.transaction[:date]).to eq "10-01-2012"
-      expect(bank_account.transaction[:credit]).to eq 1000
+      expect(bank_account.transaction[:credit]).to eq '%.2f' % 1000
       expect(bank_account.transaction[:debit]).to eq ""
-      expect(bank_account.transaction[:balance]).to eq 1000
+      expect(bank_account.transaction[:balance]).to eq '%.2f' % 1000
     end
 
     it 'In transaction history' do
@@ -44,9 +44,9 @@ describe BankAccount do
       bank_account.record_transaction
 
       expect(bank_account.transaction_history[0][:date]).to eq "10-01-2012"
-      expect(bank_account.transaction_history[0][:credit]).to eq 1000
+      expect(bank_account.transaction_history[0][:credit]).to eq '%.2f' % 1000
       expect(bank_account.transaction_history[0][:debit]).to eq ""
-      expect(bank_account.transaction_history[0][:balance]).to eq 1000
+      expect(bank_account.transaction_history[0][:balance]).to eq '%.2f' % 1000.00
     end
 
     it 'Multiple transactions are stored in transaction history' do
@@ -60,7 +60,7 @@ describe BankAccount do
       expect(bank_account.transaction_history[1][:date]).to eq "13-01-2012"
       expect(bank_account.transaction_history[2][:credit]).to eq ""
       expect(bank_account.transaction_history[0][:debit]).to eq ""
-      expect(bank_account.transaction_history[2][:balance]).to eq 2500
+      expect(bank_account.transaction_history[2][:balance]).to eq '%.2f' % 2500
     end
   end
 
@@ -73,7 +73,7 @@ describe BankAccount do
       bank_account.withdrawal(date: "14-01-2012", debit: 500)
       bank_account.record_transaction
 
-      expect{bank_account.bank_statement}.to output("date || credit || debit || balance\n10-01-2012 || 1000 ||  || 1000\n13-01-2012 || 2000 ||  || 3000\n14-01-2012 ||  || 500 || 2500\n").to_stdout
+      expect{bank_account.bank_statement}.to output("date || credit || debit || balance\n10-01-2012 || 1000.00 ||  || 1000.00\n13-01-2012 || 2000.00 ||  || 3000.00\n14-01-2012 ||  || 500.00 || 2500.00\n").to_stdout
     end
   end
 end

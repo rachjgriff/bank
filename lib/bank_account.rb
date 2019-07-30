@@ -12,9 +12,9 @@ class BankAccount
 
     @transaction = {}
     @transaction[:date] = date
-    @transaction[:credit] = credit
+    @transaction[:credit] = '%.2f' % credit
     @transaction[:debit] = ""
-    @transaction[:balance] = @balance
+    @transaction[:balance] = '%.2f' % @balance
   end
 
   def withdrawal(date:, debit:)
@@ -23,8 +23,8 @@ class BankAccount
     @transaction = {}
     @transaction[:date] = date
     @transaction[:credit] = ""
-    @transaction[:debit] = debit
-    @transaction[:balance] = @balance
+    @transaction[:debit] = '%.2f' % debit
+    @transaction[:balance] = '%.2f' % @balance
   end
 
   def record_transaction
