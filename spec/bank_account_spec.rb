@@ -73,7 +73,7 @@ describe BankAccount do
       bank_account.withdrawal(date: "14-01-2012", debit: 500)
       bank_account.record_transaction
 
-      expect{bank_account.bank_statement}.to output("date || credit || debit || balance\n10-01-2012 || 1000.00 ||  || 1000.00\n13-01-2012 || 2000.00 ||  || 3000.00\n14-01-2012 ||  || 500.00 || 2500.00\n").to_stdout
+      expect { bank_account.bank_statement }.to output("date || credit || debit || balance\n14-01-2012 ||  || 500.00 || 2500.00\n13-01-2012 || 2000.00 ||  || 3000.00\n10-01-2012 || 1000.00 ||  || 1000.00\n").to_stdout
     end
   end
 end

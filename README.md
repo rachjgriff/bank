@@ -135,3 +135,7 @@ I can store my transactions
 As a bank account holder  
 So that I can see how my balance is changing over time  
 I can see my transaction history
+
+As a bank account holder  
+So that I can see how my current balance at the top of my bank statement  
+I can see my most recent transaction first
