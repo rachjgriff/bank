@@ -32,10 +32,8 @@ class BankAccount
   end
 
   def bank_statement
-    puts 'date || credit || debit || balance'
-    sort_transactions.each do |transaction|
-      puts "#{transaction[:date]} || #{transaction[:credit]} || #{transaction[:debit]} || #{transaction[:balance]}"
-    end
+    bank_statement_header
+    bank_statement_transaction_list
   end
 
   private
@@ -44,5 +42,15 @@ class BankAccount
     @transaction_history.sort_by do |transaction|
       transaction[:date]
     end.reverse
+  end
+
+  def bank_statement_transaction_list
+    sort_transactions.each do |transaction|
+      puts "#{transaction[:date]} || #{transaction[:credit]} || #{transaction[:debit]} || #{transaction[:balance]}"
+    end
+  end
+
+  def bank_statement_header
+    puts 'date || credit || debit || balance'
   end
 end

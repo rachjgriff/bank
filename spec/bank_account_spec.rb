@@ -65,7 +65,7 @@ describe BankAccount do
   end
 
   context 'Account holder can see transaction history' do
-    it 'Print statement' do
+    it 'Print statement in reverse chronological order' do
       bank_account.deposit(date: "10-01-2012", credit: 1000)
       bank_account.record_transaction
       bank_account.deposit(date: "13-01-2012", credit: 2000)
