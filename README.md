@@ -5,8 +5,8 @@
 ## PROJECT DESCRIPTION
 ----------
 * Wk 10 Makers Tech Test Challenge
-* Banking application to be accessed via a REPL
-* User can make deposits and withdrawals, and access an up to date account statement.
+* Banking application to be accessed via a REPL (irb)
+* User can make deposits and withdrawals, and print an up to date account statement.
 
 ## TECHNOLOGY
 ---------
@@ -37,8 +37,7 @@ rubocop
 ---------
 * To run in irb, follow the below instructions:
 
-![bank_irb_example](./images/bank_irb_example.png])
-
+![bank_irb_example](images/bank_irb_example.png)
 
 ## REQUIREMENTS
 ---------
