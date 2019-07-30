@@ -35,6 +35,10 @@ rubocop
 
 ## INSTRUCTIONS
 ---------
+* To run in irb, follow the below instructions:
+
+![bank_irb_example](./images/bank_irb_example.png])
+
 
 ## REQUIREMENTS
 ---------
@@ -57,57 +61,34 @@ date || credit || debit || balance
 10/01/2012 || 1000.00 || || 1000.00
 ```
 
-## APPROACH & STRATEGY 1
+## APPROACH & STRATEGY
 ---------
-* 2 possible classes: BankAccount, BankStatement
+* Class BankAccount
+  * Initialize with:
+    * @balance = 0
+    * @transactions_history = []
 * Methods:
-  * deposit
-  * withdrawal
-  * balance (intialization)
-  * statement
-* Store transactions
+  * deposit(date: , credit: )
+  * withdrawal(date: , debit: )
+  * record_transaction
+  * bank_statement
+* Actions:
+  * Update balance
+  * Store all transactions
+  * Print transactions in above format and in reverse chronological order
+* Assumptions:
+  * Date, credit & debit are entered
+  * Date is a string
+  * Negative balance can be achieved (no )
 
 ##### QUESTIONS/THOUGHTS
-* How do I set date as the key in transactions hash?
-* Should transactions be a method?
-* How do i link the 2 classes?
 * Need to ensure that **credit** is left blank if only a **withdrawal** is made
 * Need to ensure that **debit** is left blank if only a **deposit** is made
 * Is the client allowed to have a negative balance and continue to make withdrawals?
 * Can the client make more than one deposit or withdrawal a day?
   * If so, should the credit and debit amounts sum these for that day?
   * Or can there be more than one entry for the same date?
-* Does the date auto-generate or get added manually?
-* How to store transactions?
-  * in a hash: { date => [credit, debit, balance] }
-  * in an array: [date: , credit: , debit:, balance: ]
-
-## APPROACH / STRATEGY 2
-
-* Class BankAccount
-  * Initialize with:
-    * @transactions = [date: , credit: , debit: , balance: ]
-    * @balance = 0
-* Methods:
-  * update_balance(date: , credit: , debit: )
-    * This will update balance and push information to @transactions
-  * print_statement
-    * This will take @transactions and format according to requirements above
-
-## APPROACH / STRATEGY 3
-
-* Combined Approach 1 & 2
-* Class BankAccount
-  * Initialize with:
-    * @balance = 0
-    * @transaction = {date: "", credit: 0, debit: 0, balance: @balance}
-    * @transactions = []
-* Methods:
-  * deposit(date: , credit: )
-  * withdrawal(date: , debit: )
-  * record_transaction
-  * statement
-
+* Should the date auto-generate rather than get added manually as a string?
 
 ## USER STORIES
 ---------
