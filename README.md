@@ -78,7 +78,7 @@ date || credit || debit || balance
 * Assumptions:
   * Date, credit & debit are entered
   * Date is a string
-  * Negative balance can be achieved (no )
+  * Negative balance can be achieved
 
 ##### QUESTIONS/THOUGHTS
 * Is the client allowed to have a negative balance and continue to make withdrawals?
@@ -120,12 +120,12 @@ I can see my most recent transaction first
 
 ## REFACTOR APPROACH
 --------
-* Move bank_statement method to its own class, BankStatement
-* Move transactions within deposit and withdrawal methods to private methods
+- [X] Move bank_statement method to its own class, BankStatement
+- [X] Move transactions within deposit and withdrawal methods to private methods
 
 ## NEXT STEPS
 --------
-* Move transaction_history to it's own class
-* Move transaction to it's own class
-* Look into questions above
-* Feature tests
+- [ ] Move balance and transaction to a new class (keep transaction history in BankAccount)
+- [ ] Do not allow account balance to go below 0
+- [ ] Look into questions above
+- [ ] Feature tests
