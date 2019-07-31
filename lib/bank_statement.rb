@@ -1,8 +1,7 @@
 class BankStatement
 
   def create_bank_statement(transaction_history)
-    bank_statement_header
-    bank_statement_transaction_list(transaction_history)
+    bank_statement_print_view(transaction_history)
   end
 
   private
@@ -13,13 +12,10 @@ class BankStatement
     end.reverse
   end
 
-  def bank_statement_transaction_list(transaction_history)
-    sort_transactions(transaction_history).each do |transaction|
-      puts "#{transaction[:date]} || #{transaction[:credit]} || #{transaction[:debit]} || #{transaction[:balance]}"
+  def bank_statement_print_view(transaction_history)
+    print_view = sort_transactions(transaction_history).map do |transaction|
+      "#{transaction[:date]} || #{transaction[:credit]} || #{transaction[:debit]} || #{transaction[:balance]}\n"
     end
-  end
-
-  def bank_statement_header
-    puts 'date || credit || debit || balance'
+    puts "date || credit || debit || balance\n#{print_view.join}"
   end
 end
