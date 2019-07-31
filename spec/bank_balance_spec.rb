@@ -4,6 +4,8 @@ describe BankBalance do
 
   subject(:bank_balance) { described_class.new }
 
+  let(:min_balance) { BankBalance::MIN_BALANCE }
+
   describe '#initialize' do
     context 'When a bank account is setup' do
       it 'Balance is set to 0' do
@@ -12,20 +14,24 @@ describe BankBalance do
     end
   end
 
-  describe '#debosit #withdrawal' do
-    context 'As a bank account holder, I can:' do
-      it 'Deposit money into a bank account' do
-        bank_balance.deposit(date: "10-01-2012", credit: 1000)
+  describe '#deposit' do
+    it 'Account holder can deposit money into a bank account' do
+      bank_balance.deposit(date: "10-01-2012", credit: 1000)
 
-        expect(bank_balance.balance).to eq 1000
-      end
+      expect(bank_balance.balance).to eq 1000
+    end
+  end
 
-      it 'Withdraw money from a bank account' do
-        bank_balance.deposit(date: "10-01-2012", credit: 1000)
-        bank_balance.withdrawal(date: "14-01-2012", debit: 500)
+  describe '#withdrawal' do
+    it 'Account holder can withdraw money from a bank account' do
+      bank_balance.deposit(date: "10-01-2012", credit: 1000)
+      bank_balance.withdrawal(date: "14-01-2012", debit: 500)
 
-        expect(bank_balance.balance).to eq 500
-      end
+      expect(bank_balance.balance).to eq 500
+    end
+
+    it 'Account holder cannot withdraw money if balance is 0' do
+      expect { bank_balance.withdrawal(date: "14-01-2012", debit: 500) }.to raise_error "-- Withdrawal DENIED: Balance #{'%.2f' % min_balance} --"
     end
   end
 

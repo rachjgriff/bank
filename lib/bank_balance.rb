@@ -1,5 +1,6 @@
 class BankBalance
 
+  MIN_BALANCE = 0
   attr_reader :balance, :transaction
 
   def initialize
@@ -12,6 +13,8 @@ class BankBalance
   end
 
   def withdrawal(date:, debit:)
+    fail "-- Withdrawal DENIED: Balance #{'%.2f' % MIN_BALANCE} --" if @balance <= 0
+
     @balance -= debit
     withdrawal_transaction(date, debit)
   end

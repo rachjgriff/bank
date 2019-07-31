@@ -78,10 +78,8 @@ date || credit || debit || balance
 * Assumptions:
   * Date, credit & debit are entered
   * Date is a string
-  * Negative balance can be achieved
 
 ##### QUESTIONS/THOUGHTS
-* Is the client allowed to have a negative balance and continue to make withdrawals?
 * Can the client make more than one deposit or withdrawal a day?
   * If so, should the credit and debit amounts sum these for that day?
   * Or can there be more than one entry for the same date?
@@ -118,6 +116,10 @@ As a bank account holder
 So that I can see how my current balance at the top of my bank statement  
 I can see my most recent transaction first
 
+As a bank account holder  
+So that I can control my excessive spending  
+I can not withdraw money if my balance is < 0
+
 ## REFACTOR APPROACH
 --------
 - [X] Move bank_statement method to its own class, BankStatement
@@ -125,7 +127,7 @@ I can see my most recent transaction first
 
 ## NEXT STEPS
 --------
-- [ ] Move balance and transaction to a new class (keep transaction history in BankAccount)
-- [ ] Do not allow account balance to go below 0
+- [X] Move balance and transaction to a new class (keep transaction history in BankAccount)
+- [X] Do not allow account balance to go below 0
 - [ ] Look into questions above
 - [ ] Feature tests
