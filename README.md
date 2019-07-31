@@ -81,8 +81,6 @@ date || credit || debit || balance
   * Negative balance can be achieved (no )
 
 ##### QUESTIONS/THOUGHTS
-* Need to ensure that **credit** is left blank if only a **withdrawal** is made
-* Need to ensure that **debit** is left blank if only a **deposit** is made
 * Is the client allowed to have a negative balance and continue to make withdrawals?
 * Can the client make more than one deposit or withdrawal a day?
   * If so, should the credit and debit amounts sum these for that day?
@@ -124,3 +122,10 @@ I can see my most recent transaction first
 --------
 * Move bank_statement method to its own class, BankStatement
 * Move transactions within deposit and withdrawal methods to private methods
+
+## NEXT STEPS
+--------
+* Move transaction_history to it's own class
+* Move transaction to it's own class
+* Look into questions above
+* Feature tests
