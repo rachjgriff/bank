@@ -2,7 +2,7 @@ require 'bank_account'
 
 describe BankAccount do
 
-  let(:bank_statement){ double :bank_statement }
+  let(:bank_statement) { double :bank_statement }
   subject(:bank_account) { described_class.new(bank_statement) }
 
   context 'When a bank account is setup' do
@@ -67,8 +67,8 @@ describe BankAccount do
 
   context 'Bank statement' do
     it 'Account holder can print bank statement' do
-      allow(bank_statement).to receive (:create_bank_statement) { "formatted bank statement" }
-
+      allow(bank_statement).to receive(:create_bank_statement) { "formatted bank statement" }
+      # add in .with(transaction_history)
       expect(bank_account.print_bank_statement).to eq "formatted bank statement"
     end
   end
