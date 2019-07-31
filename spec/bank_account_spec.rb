@@ -5,7 +5,7 @@ describe BankAccount do
   let(:bank_statement) { double :bank_statement }
   subject(:bank_account) { described_class.new(bank_statement) }
 
-  describe '#initialize'
+  describe '#initialize' do
     context 'When a bank account is setup' do
       it 'Balance is set to 0' do
         expect(bank_account.balance).to eq 0
@@ -17,7 +17,7 @@ describe BankAccount do
     end
   end
 
-  describe '#debosit #withdrawal'
+  describe '#debosit #withdrawal' do
     context 'As a bank account holder, I can:' do
       it 'Deposit money into a bank account' do
         bank_account.deposit(date: "10-01-2012", credit: 1000)
@@ -34,6 +34,7 @@ describe BankAccount do
     end
   end
 
+  describe '#record_transaction' do
     context 'Account holder transactions are stored' do
       it 'As a current transaction' do
         bank_account.deposit(date: "10-01-2012", credit: 1000)
@@ -68,7 +69,9 @@ describe BankAccount do
         expect(bank_account.transaction_history[2][:balance]).to eq '%.2f' % 2500
       end
     end
+  end
 
+  describe '#print_bank_statement' do
     context 'Bank statement' do
       it 'Account holder can print bank statement' do
         allow(bank_statement).to receive(:create_bank_statement) { "formatted bank statement" }
@@ -76,4 +79,5 @@ describe BankAccount do
         expect(bank_account.print_bank_statement).to eq "formatted bank statement"
       end
     end
+  end
 end
