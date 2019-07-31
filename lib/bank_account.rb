@@ -3,7 +3,7 @@ require_relative 'bank_balance'
 
 class BankAccount
 
-  attr_reader :transaction_history, :bank_statement, :bank_balance
+  attr_reader :transaction_history
 
   def initialize(bank_statement = BankStatement.new, bank_balance = BankBalance.new)
     @transaction_history = []
