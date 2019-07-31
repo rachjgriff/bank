@@ -7,7 +7,7 @@ describe BankBalance do
   let(:min_balance) { BankBalance::MIN_BALANCE }
 
   before do
-    date = Timecop.freeze(2012, 01, 10)
+    Timecop.freeze(2012, 01, 10)
   end
 
   after do
