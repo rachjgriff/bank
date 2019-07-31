@@ -37,7 +37,7 @@ rubocop
 ---------
 * To run in irb, follow the below instructions:
 
-![bank_irb_example](images/bank_irb_example.png)
+![bank_irb_example](images/bank_irb_example_update.png)
 
 ## REQUIREMENTS
 ---------
@@ -123,3 +123,4 @@ I can see my most recent transaction first
 ## REFACTOR APPROACH
 --------
 * Move bank_statement method to its own class, BankStatement
+* Move transactions within deposit and withdrawal methods to private methods
