@@ -129,5 +129,8 @@ I can not withdraw money if my balance is < 0
 --------
 - [X] Move balance and transaction to a new class (keep transaction history in BankAccount)
 - [X] Do not allow account balance to go below 0
-- [ ] Look into questions above
-- [ ] Feature tests
+- [ ] Lines under 80 characters
+- [X] Add in time.now and timecop
+- [ ] Reduce BankBalance class to 30 lines Max
+- [ ] Reduce BankBalance transaction methods to fewer than 5 lines
+- [ ] Add a feature test to run through irb commands

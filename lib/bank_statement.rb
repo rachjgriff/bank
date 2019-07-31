@@ -16,6 +16,10 @@ class BankStatement
     print_view = sort_transactions(transaction_history).map do |transaction|
       "#{transaction[:date]} || #{transaction[:credit]} || #{transaction[:debit]} || #{transaction[:balance]}\n"
     end
-    puts "date || credit || debit || balance\n#{print_view.join}"
+    puts "#{bank_statement_header}#{print_view.join}"
+  end
+
+  def bank_statement_header
+    "date || credit || debit || balance\n"
   end
 end
