@@ -1,15 +1,20 @@
+require_relative 'bank_statement'
+
 class BankAccount
 
   attr_reader :balance, :transaction, :transaction_history
 
-  def initialize
+  def initialize(bank_statement = BankStatement.new)
     @balance = 0
     @transaction_history = []
+    @bank_statement = bank_statement
   end
 
   def deposit(date:, credit:)
     @balance += credit
 
+    # Move to private as deposit_transaction
+    # Test what deposit_transaction returns
     @transaction = {}
     @transaction[:date] = date
     @transaction[:credit] = '%.2f' % credit
@@ -20,6 +25,8 @@ class BankAccount
   def withdrawal(date:, debit:)
     @balance -= debit
 
+    # Move to private as withdrawal_transaction
+    # Test what deposit_transaction returns
     @transaction = {}
     @transaction[:date] = date
     @transaction[:credit] = ""
@@ -31,26 +38,8 @@ class BankAccount
     @transaction_history << @transaction
   end
 
-  def bank_statement
-    bank_statement_header
-    bank_statement_transaction_list
-  end
-
-  private
-
-  def sort_transactions
-    @transaction_history.sort_by do |transaction|
-      transaction[:date]
-    end.reverse
-  end
-
-  def bank_statement_transaction_list
-    sort_transactions.each do |transaction|
-      puts "#{transaction[:date]} || #{transaction[:credit]} || #{transaction[:debit]} || #{transaction[:balance]}"
-    end
-  end
-
-  def bank_statement_header
-    puts 'date || credit || debit || balance'
+  # ADD METHOD TO PRINT STATEMENT - @bank_statement.print_bank_statement
+  def print_bank_statement
+    @bank_statement.create_bank_statement(@transaction_history)
   end
 end

@@ -2,7 +2,8 @@ require 'bank_account'
 
 describe BankAccount do
 
-  subject(:bank_account) { described_class.new }
+  let(:bank_statement){ double :bank_statement }
+  subject(:bank_account) { described_class.new(bank_statement) }
 
   context 'When a bank account is setup' do
     it 'Balance is set to 0' do
@@ -64,16 +65,11 @@ describe BankAccount do
     end
   end
 
-  context 'Account holder can see transaction history' do
-    it 'Print statement in reverse chronological order' do
-      bank_account.deposit(date: "10-01-2012", credit: 1000)
-      bank_account.record_transaction
-      bank_account.deposit(date: "13-01-2012", credit: 2000)
-      bank_account.record_transaction
-      bank_account.withdrawal(date: "14-01-2012", debit: 500)
-      bank_account.record_transaction
+  context 'Bank statement' do
+    it 'Account holder can print bank statement' do
+      allow(bank_statement).to receive (:create_bank_statement) { "formatted bank statement" }
 
-      expect { bank_account.bank_statement }.to output("date || credit || debit || balance\n14-01-2012 ||  || 500.00 || 2500.00\n13-01-2012 || 2000.00 ||  || 3000.00\n10-01-2012 || 1000.00 ||  || 1000.00\n").to_stdout
+      expect(bank_account.print_bank_statement).to eq "formatted bank statement"
     end
   end
 end

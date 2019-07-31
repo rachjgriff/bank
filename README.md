@@ -119,3 +119,7 @@ I can see my transaction history
 As a bank account holder  
 So that I can see how my current balance at the top of my bank statement  
 I can see my most recent transaction first
+
+## REFACTOR APPROACH
+--------
+* Move bank_statement method to its own class, BankStatement
