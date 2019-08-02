@@ -1,40 +1,37 @@
+require_relative 'bank_transaction'
+
 class BankBalance
 
   MIN_BALANCE = 0
-  attr_reader :balance, :transaction
 
-  def initialize
+  attr_reader :balance, :transaction_history
+
+  def initialize(bank_transaction = BankTransaction)
     @balance = 0
-    @date = Time.now.strftime("%d/%m/%Y")
+    @transaction_history = []
+    @bank_transaction = bank_transaction
   end
 
   def deposit(credit:)
     @balance += credit
-    deposit_transaction(credit)
+
+    bank_transaction = @bank_transaction.new
+    bank_transaction.deposit_transaction(credit, balance)
+    record_transaction(bank_transaction.transaction)
   end
 
   def withdrawal(debit:)
     fail "-- Withdrawal DENIED: Balance #{'%.2f' % MIN_BALANCE} --" if @balance <= 0
 
     @balance -= debit
-    withdrawal_transaction(debit)
+    bank_transaction = @bank_transaction.new
+    bank_transaction.withdrawal_transaction(debit, balance)
+    record_transaction(bank_transaction.transaction)
   end
 
   private
 
-  def deposit_transaction(credit)
-    @transaction = {}
-    @transaction[:date] = @date
-    @transaction[:credit] = '%.2f' % credit
-    @transaction[:debit] = ""
-    @transaction[:balance] = '%.2f' % @balance
-  end
-
-  def withdrawal_transaction(debit)
-    @transaction = {}
-    @transaction[:date] = @date
-    @transaction[:credit] = ""
-    @transaction[:debit] = '%.2f' % debit
-    @transaction[:balance] = '%.2f' % @balance
+  def record_transaction(bank_transaction)
+    @transaction_history << bank_transaction
   end
 end

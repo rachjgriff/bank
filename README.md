@@ -28,7 +28,7 @@ bundle
 ## TESTING
 ---------
 ```
-rspec 
+rspec
 
 rubocop
 ```
@@ -134,3 +134,12 @@ I can not withdraw money if my balance is < 0
 - [ ] Reduce BankBalance class to 30 lines Max
 - [ ] Reduce BankBalance transaction methods to fewer than 5 lines
 - [ ] Add a feature test to run through irb commands
+
+- [ ] Remove test in bank_balance for @balance = 0 on intialization - this is testing state
+
+
+- testing what a method returns is testing behaviour
+- some methods update instance variables which is not returning anything - if you test that the variable has updated then this is testing state - e.g. deposit and withdrawal
+- in this case you need to find another method that returns something that uses the instance variable to check it has worked
+- if your adding in an attr_reader just to test a variable, this is likely to be wrong
+- good practice that a method should only return one 'type' e.g. integer, string or boolean

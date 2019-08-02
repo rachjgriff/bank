@@ -3,19 +3,14 @@ require_relative 'bank_balance'
 
 class BankAccount
 
-  attr_reader :transaction_history, :bank_balance, :bank_statement
+  attr_reader :bank_balance, :bank_statement
 
   def initialize(bank_statement = BankStatement.new, bank_balance = BankBalance.new)
-    @transaction_history = []
     @bank_statement = bank_statement
     @bank_balance = bank_balance
   end
 
-  def record_transaction
-    @transaction_history << @bank_balance.transaction
-  end
-
   def print_bank_statement
-    @bank_statement.create_bank_statement(@transaction_history)
+    @bank_statement.create_bank_statement(@bank_balance.transaction_history)
   end
 end
