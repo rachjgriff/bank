@@ -33,7 +33,8 @@ describe BankBalance do
     end
 
     it 'Balance is 0' do
-      expect { bank_balance.withdrawal(debit: 500) }.to raise_error "-- Withdrawal DENIED: Balance #{'%.2f' % min_balance} --"
+      expect { bank_balance.withdrawal(debit: 500) }.
+        to raise_error "- Withdrawal DENIED: Balance #{'%.2f' % min_balance} -"
     end
   end
 
@@ -42,8 +43,8 @@ describe BankBalance do
     it 'Stores a single transaction in transaction history' do
       allow(bank_transaction).to receive(:transaction) {
         { :date => "10/01/2012", :credit => "1000.00",
-          :debit => "", :balance => "1000.00" }
-        }
+        :debit => "", :balance => "1000.00" }
+      }
 
       bank_balance.deposit(credit: 1000)
 
@@ -56,24 +57,25 @@ describe BankBalance do
     it 'Stores multiple transactions in transaction history' do
       allow(bank_transaction).to receive(:transaction) {
         { :date => "10/01/2012", :credit => "1000.00",
-          :debit => "", :balance => "1000.00" }
-        }
+        :debit => "", :balance => "1000.00" }
+      }
 
       bank_balance.deposit(credit: 1000)
 
       allow(bank_transaction).to receive(:deposit_transaction).with(2000, 3000)
       allow(bank_transaction).to receive(:transaction) {
-         { :date => "13-01-2012", :credit => "2000.00",
-           :debit => "", :balance => "3000.00" }
-         }
+        { :date => "13-01-2012", :credit => "2000.00",
+        :debit => "", :balance => "3000.00" }
+      }
 
       bank_balance.deposit(credit: 2000)
 
-      allow(bank_transaction).to receive(:withdrawal_transaction).with(500, 2500)
+      allow(bank_transaction).to receive(:withdrawal_transaction).
+        with(500, 2500)
       allow(bank_transaction).to receive(:transaction) {
-         { :date => "14-01-2012", :credit => "",
-           :debit => "500.00", :balance => "2500.00" }
-         }
+        { :date => "14-01-2012", :credit => "",
+        :debit => "500.00", :balance => "2500.00" }
+      }
 
       bank_balance.withdrawal(debit: 500)
 

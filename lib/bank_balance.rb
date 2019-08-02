@@ -21,7 +21,7 @@ class BankBalance
   end
 
   def withdrawal(debit:)
-    fail "-- Withdrawal DENIED: Balance #{'%.2f' % MIN_BALANCE} --" if @balance <= 0
+    fail "- Withdrawal DENIED: Balance #{'%.2f' % MIN_BALANCE} -" if @balance <= 0
 
     @balance -= debit
     bank_transaction = @bank_transaction.new

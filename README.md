@@ -126,16 +126,26 @@ I can not withdraw money if my balance is < 0
 - [X] Move transactions within deposit and withdrawal methods to private methods
 - [X] Move balance and transaction to a new class
 - [X] Do not allow account balance to go below 0
-- [ ] Lines under 80 characters
+- [ ] Lines under 80 characters - NOT QUITE - 4 OFFENSES OUTSTANDING
 - [X] Add in time.now and timecop
-- [ ] Reduce BankBalance class to 30 lines Max
-- [ ] Reduce BankBalance transaction methods to fewer than 5 lines
+- [ ] Reduce BankBalance class to 30 lines Max - NOT QUITE - 37 LINES
+- [ ] Reduce methods to fewer than 5 lines - NOT QUITE - withdrawal(debit:) 5 LINES
 - [X] Add a feature test to run through irb commands
 - [X] Remove tests that
 
+- [ ] Review for testing behaviour NOT state
 
+## FOLLOW UP
+--------
+* Look into further opportunites for splitting classes further - possibly transaction_history
+* Remove return nil from print statement method
+* Remove Rubocop offenses
+
+## NOTES
+---------
+##### TESTING BEHAVIOUR NOTES
 - testing what a method returns is testing behaviour
-- some methods update instance variables which is not returning anything - if you test that the variable has updated then this is testing state - e.g. deposit and withdrawal
+- some methods update instance variables which are not returning anything - if you test that the variable has updated then this is testing state - e.g. deposit and withdrawal
 - in this case you need to find another method that returns something that uses the instance variable to check it has worked
-- if your adding in an attr_reader just to test a variable, this is likely to be wrong
+- if you're adding in an attr_reader just to test a variable, this is likely to be wrong
 - good practice that a method should only return one 'type' e.g. integer, string or boolean

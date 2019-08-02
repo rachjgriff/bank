@@ -9,7 +9,8 @@ describe BankAccount do
   describe '#print_bank_statement' do
     it 'Account holder can print bank statement' do
       allow(bank_balance).to receive(:transaction_history)
-      allow(bank_statement).to receive(:create_bank_statement) { "formatted bank statement" }
+      allow(bank_statement).
+        to receive(:create_bank_statement) { "formatted bank statement" }
 
       expect(bank_account.print_bank_statement).to eq "formatted bank statement"
     end

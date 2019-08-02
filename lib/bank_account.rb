@@ -5,7 +5,8 @@ class BankAccount
 
   attr_reader :bank_balance, :bank_statement
 
-  def initialize(bank_statement = BankStatement.new, bank_balance = BankBalance.new)
+  def initialize(bank_statement = BankStatement.new,
+      bank_balance = BankBalance.new)
     @bank_statement = bank_statement
     @bank_balance = bank_balance
   end
