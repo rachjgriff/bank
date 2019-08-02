@@ -124,18 +124,14 @@ I can not withdraw money if my balance is < 0
 --------
 - [X] Move bank_statement method to its own class, BankStatement
 - [X] Move transactions within deposit and withdrawal methods to private methods
-
-## NEXT STEPS
---------
-- [X] Move balance and transaction to a new class (keep transaction history in BankAccount)
+- [X] Move balance and transaction to a new class
 - [X] Do not allow account balance to go below 0
 - [ ] Lines under 80 characters
 - [X] Add in time.now and timecop
 - [ ] Reduce BankBalance class to 30 lines Max
 - [ ] Reduce BankBalance transaction methods to fewer than 5 lines
-- [ ] Add a feature test to run through irb commands
-
-- [ ] Remove test in bank_balance for @balance = 0 on intialization - this is testing state
+- [X] Add a feature test to run through irb commands
+- [X] Remove tests that
 
 
 - testing what a method returns is testing behaviour

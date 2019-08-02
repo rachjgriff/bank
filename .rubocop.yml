@@ -481,7 +481,7 @@ ZeroLengthPredicate:
 Metrics/BlockLength:
   Enabled: false
 Metrics/LineLength:
-  Enabled: false
+  Max: 80
 
 # AllCops:
 #   Exclude:
