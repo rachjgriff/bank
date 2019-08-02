@@ -37,7 +37,7 @@ rubocop
 ---------
 * To run in irb, follow the below instructions:
 
-![bank_irb_example](images/bank_irb_example_update_2.png)
+![bank_irb_example](images/bank_irb_example_update_3.png)
 
 ## REQUIREMENTS
 ---------
