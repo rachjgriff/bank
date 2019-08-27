@@ -21,3 +21,8 @@ class BankTransaction
     @transaction[:balance] = '%.2f' % balance
   end
 end
+
+# create one method - user_transaction
+# setup class to be initialized with this info
+# BankBalance should hold the logic to determine credit or debit
+# if implemented, wouldn't need to test this class

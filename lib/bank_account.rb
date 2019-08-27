@@ -15,3 +15,6 @@ class BankAccount
     @bank_statement.create_bank_statement(@bank_balance.transaction_history)
   end
 end
+
+# functions should always return something to test
+# make sure they help your program and your logic

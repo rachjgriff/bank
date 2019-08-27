@@ -149,3 +149,7 @@ I can not withdraw money if my balance is < 0
 - in this case you need to find another method that returns something that uses the instance variable to check it has worked
 - if you're adding in an attr_reader just to test a variable, this is likely to be wrong
 - good practice that a method should only return one 'type' e.g. integer, string or boolean
+
+- the main thing to keep in mind about testing behaviour vs state is that testing behaviour is testing what the method returns and checking is behaves as you expect.
+- If the method returns nothing then often a test for that method will be stateful.
+- The only way around this is to get the method to actually *return something* or to have another method which also tests that method as I mentioned.
