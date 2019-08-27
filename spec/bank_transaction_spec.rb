@@ -1,35 +1,24 @@
-# require 'bank_transaction'
-#
-# describe BankTransaction do
-#
-#   subject(:bank_transaction) { described_class.new }
-#
-#   before do
-#     Timecop.freeze(2012, 01, 10)
-#     bank_transaction.deposit_transaction(1000, 1000)
-#   end
-#
-#   after do
-#     Timecop.return
-#   end
-#
-#   describe '#deposit_transaction' do
-#     it 'Stores the current transaction' do
-#       expect(bank_transaction.transaction[:date]).to eq "10/01/2012"
-#       expect(bank_transaction.transaction[:credit]).to eq '%.2f' % 1000
-#       expect(bank_transaction.transaction[:debit]).to eq ""
-#       expect(bank_transaction.transaction[:balance]).to eq '%.2f' % 1000
-#     end
-#   end
-#
-#   describe '#withdrawal_transaction' do
-#     it 'Stores the current transaction' do
-#       bank_transaction.withdrawal_transaction(500, 500)
-#
-#       expect(bank_transaction.transaction[:date]).to eq "10/01/2012"
-#       expect(bank_transaction.transaction[:credit]).to eq ""
-#       expect(bank_transaction.transaction[:debit]).to eq '%.2f' % 500
-#       expect(bank_transaction.transaction[:balance]).to eq '%.2f' % 500
-#     end
-#   end
-# end
+require 'bank_transaction'
+
+describe BankTransaction do
+
+  before do
+    Timecop.freeze(2012, 01, 10)
+  end
+
+  after do
+    Timecop.return
+  end
+
+  describe '#transaction_entry' do
+    it 'Returns the current transaction entry' do
+      bank_transaction = BankTransaction.new(1000, 0, 1000)
+      expect(bank_transaction.transaction_entry).to include(
+        :date => "10/01/2012",
+        :credit => "1000.00",
+        :debit => "0.00",
+        :balance => "1000.00"
+      )
+    end
+  end
+end

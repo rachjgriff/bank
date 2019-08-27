@@ -37,7 +37,7 @@ rubocop
 ---------
 * To run in irb, follow the below instructions:
 
-![bank_irb_example](images/bank_irb_example_update_3.png)
+![bank_irb_example](images/bank_irb_example_update_4.png)
 
 ## REQUIREMENTS
 ---------
@@ -83,7 +83,6 @@ date || credit || debit || balance
 * Can the client make more than one deposit or withdrawal a day?
   * If so, should the credit and debit amounts sum these for that day?
   * Or can there be more than one entry for the same date?
-* Should the date auto-generate rather than get added manually as a string?
 
 ## USER STORIES
 ---------
@@ -126,30 +125,31 @@ I can not withdraw money if my balance is < 0
 - [X] Move transactions within deposit and withdrawal methods to private methods
 - [X] Move balance and transaction to a new class
 - [X] Do not allow account balance to go below 0
-- [ ] Lines under 80 characters - NOT QUITE - 4 OFFENSES OUTSTANDING
+- [ ] Lines under 80 characters
 - [X] Add in time.now and timecop
-- [ ] Reduce BankBalance class to 30 lines Max - NOT QUITE - 37 LINES
-- [ ] Reduce methods to fewer than 5 lines - NOT QUITE - withdrawal(debit:) 5 LINES
-- [X] Add a feature test to run through irb commands
-- [X] Remove tests that
-
-- [ ] Review for testing behaviour NOT state
+- [ ] Reduce BankBalance class to 30 lines Max
+- [ ] Reduce methods to fewer than 5 lines
+- [X] Add end-to-end test
+- [ ] Add feature tests to test:
+  - deposits & withdrawals
+  - transactions
+  - statement
+- [X] Review for testing behaviour NOT state
 
 ## FOLLOW UP
 --------
-* Look into further opportunites for splitting classes further - possibly transaction_history
+* Look into further opportunities for splitting classes further - possibly transaction_history
 * Remove return nil from print statement method
 * Remove Rubocop offenses
 
-## NOTES
+## WORKSHOP NOTES
 ---------
 ##### TESTING BEHAVIOUR NOTES
 - testing what a method returns is testing behaviour
-- some methods update instance variables which are not returning anything - if you test that the variable has updated then this is testing state - e.g. deposit and withdrawal
+- some methods update instance variables which are not returning anything - if you test that the variable has updated then this is testing state - e.g. balance within deposit and withdrawal
 - in this case you need to find another method that returns something that uses the instance variable to check it has worked
 - if you're adding in an attr_reader just to test a variable, this is likely to be wrong
-- good practice that a method should only return one 'type' e.g. integer, string or boolean
-
-- the main thing to keep in mind about testing behaviour vs state is that testing behaviour is testing what the method returns and checking is behaves as you expect.
-- If the method returns nothing then often a test for that method will be stateful.
+- good practice is that a method should only return one 'type' e.g. integer, string or boolean
+- the main thing to keep in mind about testing behaviour vs state is that testing behaviour is testing what the method returns and checking it behaves as you expect.
+- If the method does not return anything then often a test for that method will be stateful.
 - The only way around this is to get the method to actually *return something* or to have another method which also tests that method as I mentioned.

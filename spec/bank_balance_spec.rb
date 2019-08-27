@@ -3,86 +3,72 @@ require 'bank_balance'
 describe BankBalance do
 
   let(:bank_transaction_class) { double :bank_transaction_class }
-  let(:bank_transaction) { double :bank_transaction }
+  let(:new_bank_transaction) { double :new_bank_transaction }
 
   subject(:bank_balance) { described_class.new(bank_transaction_class) }
 
   let(:min_balance) { BankBalance::MIN_BALANCE }
 
   before(:each) do
-    allow(bank_transaction_class).to receive(:new) { bank_transaction }
-    allow(bank_transaction).to receive(:deposit_transaction).with(1000, 1000)
-    allow(bank_transaction).to receive(:transaction)
+    allow(bank_transaction_class).to receive(:new) { new_bank_transaction }
+    allow(new_bank_transaction).to receive(:transaction_entry)
   end
 
-  describe '#deposit #withdrawal' do
+  describe '#deposit' do
+    context 'When a bank account holder deposits money into their bank account' do
+      it 'Returns the transaction' do
+        allow(new_bank_transaction).to receive(:transaction) {
+          { :date => "10/01/2012",
+            :credit => "1000.00",
+            :debit => "0.00",
+            :balance => "1000.00"
+          }
+        }
 
-    it 'Account holder can deposit money into a bank account' do
-      bank_balance.deposit(1000)
-
-      expect(bank_balance.balance).to eq 1000
-    end
-
-    it 'Account holder can withdraw money from a bank account' do
-      bank_balance.deposit(1000)
-
-      allow(bank_transaction).to receive(:withdrawal_transaction).with(500, 500)
-      bank_balance.withdrawal(500)
-
-      expect(bank_balance.balance).to eq 500
-    end
-
-    it 'Balance is 0' do
-      expect { bank_balance.withdrawal(500) }.
-        to raise_error "- Withdrawal DENIED: Balance #{'%.2f' % min_balance} -"
+        expect(bank_balance.deposit(1000)).to include(
+          :date => "10/01/2012",
+          :credit => "1000.00",
+          :debit => "0.00",
+          :balance => "1000.00"
+        )
+      end
     end
   end
 
-  describe '#record_transaction' do
+  describe '#withdrawal' do
+    context 'When a bank account holder withdraws money from their bank account' do
+      it 'Returns the transaction' do
+        allow(new_bank_transaction).to receive(:transaction) {
+          { :date => "10/01/2012",
+            :credit => "1000.00",
+            :debit => "0.00",
+            :balance => "1000.00"
+          }
+        }
 
-    it 'Stores a single transaction in transaction history' do
-      allow(bank_transaction).to receive(:transaction) {
-        { :date => "10/01/2012", :credit => "1000.00",
-        :debit => "", :balance => "1000.00" }
-      }
+        bank_balance.deposit(1000)
 
-      bank_balance.deposit(1000)
-
-      expect(bank_balance.transaction_history[0][:date]).to eq "10/01/2012"
-      expect(bank_balance.transaction_history[0][:credit]).to eq '%.2f' % 1000
-      expect(bank_balance.transaction_history[0][:debit]).to eq ""
-      expect(bank_balance.transaction_history[0][:balance]).to eq '%.2f' % 1000
+        allow(new_bank_transaction).to receive(:transaction) {
+          { :date => "11/01/2012",
+            :credit => "0.00",
+            :debit => "500.00",
+            :balance => "500.00"
+          }
+        }
+        expect(bank_balance.withdrawal(500)).to include(
+          :date => "11/01/2012",
+          :credit => "0.00",
+          :debit => "500.00",
+          :balance => "500.00"
+        )
+      end
     end
 
-    it 'Stores multiple transactions in transaction history' do
-      allow(bank_transaction).to receive(:transaction) {
-        { :date => "10/01/2012", :credit => "1000.00",
-        :debit => "", :balance => "1000.00" }
-      }
-
-      bank_balance.deposit(1000)
-
-      allow(bank_transaction).to receive(:deposit_transaction).with(2000, 3000)
-      allow(bank_transaction).to receive(:transaction) {
-        { :date => "13-01-2012", :credit => "2000.00",
-        :debit => "", :balance => "3000.00" }
-      }
-
-      bank_balance.deposit(2000)
-
-      allow(bank_transaction).to receive(:withdrawal_transaction).
-        with(500, 2500)
-      allow(bank_transaction).to receive(:transaction) {
-        { :date => "14-01-2012", :credit => "",
-        :debit => "500.00", :balance => "2500.00" }
-      }
-
-      bank_balance.withdrawal(500)
-
-      expect(bank_balance.transaction_history[1][:date]).to eq "13-01-2012"
-      expect(bank_balance.transaction_history[2][:credit]).to eq ""
-      expect(bank_balance.transaction_history[0][:debit]).to eq ""
-      expect(bank_balance.transaction_history[2][:balance]).to eq '%.2f' % 2500
+    context 'When the bank account balance minus the withdrawal amount is zero or less' do
+      it 'Returns an error message' do
+        expect { bank_balance.withdrawal(500) }.
+          to raise_error "- Withdrawal DENIED: Balance #{'%.2f' % min_balance} -"
+      end
     end
   end
 end
