@@ -12,29 +12,29 @@ class BankBalance
     @bank_transaction = bank_transaction
   end
 
-  def deposit(credit:)
+  def deposit(credit)
     @balance += credit
-
     # abstract out to private method create_transaction
-    bank_transaction = @bank_transaction.new
-    bank_transaction.deposit_transaction(credit, balance)
-    record_transaction(bank_transaction.transaction)
+    create_transaction(credit, 0, @balance)
     # write out steps of method
     # need to return something to test so not testing the state - transaction hash
     # return latest transaction from transaction_history - test the method to return this not transaction_history
     # shouldn't need balance in attr_reader if all it's in there for is to test
   end
 
-  def withdrawal(debit:)
+  def withdrawal(debit)
     fail "- Withdrawal DENIED: Balance #{'%.2f' % MIN_BALANCE} -" if @balance <= 0
 
     @balance -= debit
-    bank_transaction = @bank_transaction.new
-    bank_transaction.withdrawal_transaction(debit, balance)
-    record_transaction(bank_transaction.transaction)
+    create_transaction(0, debit, @balance)
   end
 
   private
+
+  def create_transaction(credit, debit, balance)
+    bank_transaction = @bank_transaction.new(credit, debit, balance)
+    record_transaction(bank_transaction.transaction)
+  end
 
   # becomes part of create_transaction
   def record_transaction(bank_transaction)
